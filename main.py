@@ -19,7 +19,11 @@ and when we agree,
 the door opens."""
 
 def main():
+    # Keep the poem exactly as written: no trailing spaces, one
+    # trailing newline, and a length check so an invalid text
+    # can never be written silently.
     text = POEM.strip() + "\n"
+    assert 1 <= len(POEM.strip()) <= 280, "poem must be 1-280 chars"
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
     try:
         os.makedirs(out_dir, exist_ok=True)
